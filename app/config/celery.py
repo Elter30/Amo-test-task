@@ -1,6 +1,5 @@
 import os
 from datetime import timedelta
-from celery.schedules import crontab
 from celery import Celery
 
 os.environ.setdefault(key='DJANGO_SETTINGS_MODULE', value='config.settings')
@@ -11,7 +10,11 @@ app.config_from_object("django.conf:settings", namespace="CELERY")
 app.conf.beat_schedule = {
     "poll_machines": {
         "task": "analytics.tasks.poll_machines",
-        "schedule": timedelta(minutes=15)
+        "schedule": timedelta(seconds=15)
+    },
+    "check_metrics": {
+        "task": "analytics.tasks.check_metrics",
+        "schedule": timedelta(seconds=30)
     }
 }
 

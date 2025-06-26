@@ -16,7 +16,7 @@ def metrics():
     
     # Генерация реалистичных метрик
     return jsonify({
-        "cpu": round(random.uniform(0.1, 99.9), 1),
+        "cpu": round(random.uniform(50.1, 99.9), 1),
         "mem": f"{random.randint(1, 99)}%",
         "disk": f"{random.randint(1, 99)}%",
         "uptime": f"{random.randint(0, 30)}d {random.randint(0, 23)}h {random.randint(0, 59)}m"
